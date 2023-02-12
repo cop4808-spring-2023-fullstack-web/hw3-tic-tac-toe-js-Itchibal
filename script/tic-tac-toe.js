@@ -1,10 +1,11 @@
 const statusDisplay = document.querySelector('.status');
 
 let gameActive = true;
-let currentPlayer = "X";
+let currentPlayer;
 let gameState = ["", "", "", "", "", "", "", "", ""];
 let PlayerOScore = 0;
 let PlayerXScore = 0;
+let DrawScore = 0;
 
 const winningMessage = () => `Player ${currentPlayer} has won!`;
 const drawMessage = () => `Game ended in a draw!`;
@@ -46,13 +47,15 @@ return null;
 */
   
 function PickRandomPlayer() {
-    Picker = Math.random() 
-    if (Picker == 0)
+    if (Math.random() < 0.5){
         currentPlayer = "X";
-    else if (Picker == 1)
+    }
+    else {
         currentPlayer = "O";
-    return currentPlayer;
+    }
+    statusDisplay.innerHTML = currentPlayerTurn();
 }
+PickRandomPlayer()
 
 
 function handleCellPlayed(clickedCell, clickedCellIndex) {
@@ -78,9 +81,10 @@ function handlePlayerChange() {
 }
 
 function UpdateStatusBar() {
-    document.getElementById("Oscore").innerHTML = "Player 'O': " + PlayerOScore;
-    document.getElementById("Xscore").innerHTML = "Player 'X': " + PlayerXScore;
-    document.getElementById("Turn").innerHTML = "Turn:  " + currentPlayer;
+    document.getElementById("Oscore").innerHTML = "Player 'O': " + PlayerOScore + " |";
+    document.getElementById("Xscore").innerHTML = "Player 'X': " + PlayerXScore + " |";
+    document.getElementById("Turn").innerHTML = "Turn:  " + currentPlayer + " |";
+    document.getElementById("Draw").innerHTML = "Draws:  " + DrawScore + " |";
 }
 
 function CheckWin() {
@@ -112,6 +116,8 @@ function CheckWin() {
         statusDisplay.innerHTML = drawMessage();
         gameActive = false;
         statusDisplay.style.color = "rgb(251,100,204)";
+        DrawScore += 1;
+        UpdateStatusBar()
         return roundDraw;
     }
 
