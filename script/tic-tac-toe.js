@@ -31,7 +31,7 @@ function handlePlayerChange() {
     statusDisplay.innerHTML = currentPlayerTurn();
 }
 
-function handleResultValidation() {
+function CheckWin() {
     let roundWon = false;
     for (let i = 0; i <= 7; i++) {
         const winCondition = winningConditions[i];
@@ -46,7 +46,6 @@ function handleResultValidation() {
             break
         }
     }
-
     if (roundWon) {
         statusDisplay.innerHTML = winningMessage();
         gameActive = false;
@@ -62,7 +61,36 @@ function handleResultValidation() {
         return;
     }
 
-    handlePlayerChange();
+}
+
+function handleResultValidation() {
+    CheckWin();
+
+    if (gameActive) {
+        handlePlayerChange();
+        handleComputerMove();
+    }
+}
+
+function handleComputerMove() {
+    ChooseMove()
+    if (!CheckWin()){
+        handlePlayerChange()
+    }
+}
+
+function ChooseMove() {
+    while (true) {
+        var m = Math.floor(Math.random() * 8)
+        if (gameState[m]=='') // Looking for Empty Spot
+            break;
+    }
+    //m is the spot computer is moving
+    gameState[m] = currentPlayer
+    document.getElementById(m).innerHTML = currentPlayer
+    //document.querySelectorAll('.cell').getAttributeNode(m).value = currentPlayer
+
+
 }
 
 function handleCellClick(clickedCellEvent) {
