@@ -3,6 +3,8 @@ const statusDisplay = document.querySelector('.status');
 let gameActive = true;
 let currentPlayer = "X";
 let gameState = ["", "", "", "", "", "", "", "", ""];
+let PlayerOScore = 0;
+let PlayerXScore = 0;
 
 const winningMessage = () => `Player ${currentPlayer} has won!`;
 const drawMessage = () => `Game ended in a draw!`;
@@ -21,6 +23,16 @@ const winningConditions = [
     [2, 4, 6]
 ];
 
+function PickRandomPlayer() {
+    Picker = Math.random() 
+    if (Picker == 0)
+        currentPlayer = "X";
+    else if (Picker == 1)
+        currentPlayer = "O";
+    return currentPlayer;
+}
+
+
 function handleCellPlayed(clickedCell, clickedCellIndex) {
     gameState[clickedCellIndex] = currentPlayer;
     clickedCell.innerHTML = currentPlayer;
@@ -29,6 +41,12 @@ function handleCellPlayed(clickedCell, clickedCellIndex) {
 function handlePlayerChange() {
     currentPlayer = currentPlayer === "X" ? "O" : "X";
     statusDisplay.innerHTML = currentPlayerTurn();
+}
+
+function UpdateStatusBar() {
+    document.getElementById("Oscore").innerHTML = "Player 'O': " + PlayerOScore;
+    document.getElementById("Xscore").innerHTML = "Player 'X': " + PlayerXScore;
+    document.getElementById("Turn").innerHTML = "Turn:  " + currentPlayer;
 }
 
 function CheckWin() {
@@ -50,7 +68,9 @@ function CheckWin() {
         statusDisplay.innerHTML = winningMessage();
         gameActive = false;
         statusDisplay.style.color = "rgb(251,100,204)";
-        return;
+        IncreasePoints()
+        UpdateStatusBar()
+        return roundWon;
     }
 
     let roundDraw = !gameState.includes("");
@@ -58,9 +78,19 @@ function CheckWin() {
         statusDisplay.innerHTML = drawMessage();
         gameActive = false;
         statusDisplay.style.color = "rgb(251,100,204)";
-        return;
+        return roundDraw;
     }
 
+}
+
+function IncreasePoints(){
+    if(currentPlayer === "X"){
+        PlayerXScore += 1;
+    }
+    else if(currentPlayer === "O"){
+        PlayerOScore += 1;
+    }
+    
 }
 
 function handleResultValidation() {
@@ -112,6 +142,8 @@ function handleRestartGame() {
     statusDisplay.style.color = "rgb(65, 65, 65)";
     statusDisplay.innerHTML = currentPlayerTurn();
     document.querySelectorAll('.cell').forEach(cell => cell.innerHTML = "");
+    PickRandomPlayer()
+    UpdateStatusBar()
 }
 
 document.querySelectorAll('.cell').forEach(cell => cell.addEventListener('click', handleCellClick));

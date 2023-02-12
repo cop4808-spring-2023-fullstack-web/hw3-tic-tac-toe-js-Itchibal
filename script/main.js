@@ -80,8 +80,15 @@ function gameOver(winner) {
 }
 
 
-
-
+function PickRandomPlayer() {
+    Picker = Math.random() 
+    if (Picker == 0)
+        currentPlayer = "X";
+    else if (Picker == 1)
+        currentPlayer = "O";
+    return;
+}
+PickRandomPlayer()
 
 
 // Reload button functionality
