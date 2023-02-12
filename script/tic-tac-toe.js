@@ -54,6 +54,7 @@ function PickRandomPlayer() {
         currentPlayer = "O";
     }
     statusDisplay.innerHTML = currentPlayerTurn();
+    console.log("Starting Player is :" + currentPlayer)
 }
 PickRandomPlayer()
 
@@ -72,12 +73,14 @@ function handleCellPlayed(clickedCell, clickedCellIndex) {
         winCondition.forEach(index => {  //Once Found, Make them Green.
             cells[index].style.backgroundColor = 'green';
         });
+        console.log("The Winning Combination is " + winCondition);
     }
 }
 
 function handlePlayerChange() {
     currentPlayer = currentPlayer === "X" ? "O" : "X";
     statusDisplay.innerHTML = currentPlayerTurn();
+    console.log("It is now " + currentPlayer + " turn.")
 }
 
 function UpdateStatusBar() {
@@ -108,6 +111,7 @@ function CheckWin() {
         statusDisplay.style.color = "rgb(251,100,204)";
         IncreasePoints()
         UpdateStatusBar()
+        console.log("The Winner of this round is " + currentPlayer);
         return roundWon;
     }
 
@@ -118,6 +122,7 @@ function CheckWin() {
         statusDisplay.style.color = "rgb(251,100,204)";
         DrawScore += 1;
         UpdateStatusBar()
+        console.log("Game has ended in a Draw!");
         return roundDraw;
     }
 
@@ -126,9 +131,13 @@ function CheckWin() {
 function IncreasePoints(){
     if(currentPlayer === "X"){
         PlayerXScore += 1;
+        console.log("Player X has Gained 1 Point");
+        console.log("Player X has a Total of " + PlayerXScore + " points.");
     }
     else if(currentPlayer === "O"){
         PlayerOScore += 1;
+        console.log("Player O has Gained 1 Point");
+        console.log("Player O has a Total of " + PlayerOScore + " points.");
     }
     
 }
