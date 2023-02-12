@@ -59,14 +59,14 @@ function handleCellPlayed(clickedCell, clickedCellIndex) {
     gameState[clickedCellIndex] = currentPlayer;
     clickedCell.innerHTML = currentPlayer;
 
-    if(CheckWin()){
-        let winCondition = winningConditions.find(condition=> {
+    if(CheckWin()){ // Calling Our CheckWin Function
+        let winCondition = winningConditions.find(condition=> {  //Find the Winning Combo
             return gameState[condition[0]] === currentPlayer && 
                    gameState[condition[1]] === currentPlayer && 
                    gameState[condition[2]] === currentPlayer;
         });
 
-        winCondition.forEach(index => {
+        winCondition.forEach(index => {  //Once Found, Make them Green.
             cells[index].style.backgroundColor = 'green';
         });
     }
@@ -128,11 +128,11 @@ function IncreasePoints(){
 }
 
 function handleResultValidation() {
-    CheckWin();
-
+    
     if (gameActive) {
         handlePlayerChange();
         handleComputerMove();
+        CheckWin();
     }
 }
 
@@ -190,6 +190,11 @@ function handleRestartGame() {
     gameActive = true;
     currentPlayer = "X";
     gameState = ["", "", "", "", "", "", "", "", ""];
+    cells.forEach(cell => {
+        cell.innerHTML = "";
+        cell.style.backgroundColor = "transparent";
+    })
+
     statusDisplay.style.color = "rgb(65, 65, 65)";
     statusDisplay.innerHTML = currentPlayerTurn();
     document.querySelectorAll('.cell').forEach(cell => cell.innerHTML = "");
