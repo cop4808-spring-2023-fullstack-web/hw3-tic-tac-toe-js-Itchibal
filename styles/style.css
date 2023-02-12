@@ -40,6 +40,19 @@ body {
     
 }
 
+.cell--Winner {
+    width: 6rem;
+    height: 6rem;
+    border: 6px solid green;
+    margin: -6px 0 0 -6px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 6rem;
+    font-size: 6rem;
+    cursor: pointer;
+    
+}
+
 a {
     text-decoration: underline;
     color: black;

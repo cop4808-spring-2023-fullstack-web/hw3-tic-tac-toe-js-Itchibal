@@ -9,6 +9,7 @@ let PlayerXScore = 0;
 const winningMessage = () => `Player ${currentPlayer} has won!`;
 const drawMessage = () => `Game ended in a draw!`;
 const currentPlayerTurn = () => `It's ${currentPlayer}'s turn`;
+const cells = document.querySelectorAll('.cell');
 
 statusDisplay.innerHTML = currentPlayerTurn();
 
@@ -22,7 +23,28 @@ const winningConditions = [
     [0, 4, 8],
     [2, 4, 6]
 ];
+/*function findWinningCombo() {
+const winningConditions = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+];
+for (const combination of winningConditions) {
+    const [a,b,c] = combination;
 
+    if(this.gameBoard[a] && (this.gameBoard[a] === this.gameBoard[b] && this.gameBoard[a] === this.gameBoard[c])){
+        return combination;
+}
+}
+return null;
+}
+*/
+  
 function PickRandomPlayer() {
     Picker = Math.random() 
     if (Picker == 0)
@@ -36,6 +58,18 @@ function PickRandomPlayer() {
 function handleCellPlayed(clickedCell, clickedCellIndex) {
     gameState[clickedCellIndex] = currentPlayer;
     clickedCell.innerHTML = currentPlayer;
+
+    if(CheckWin()){
+        let winCondition = winningConditions.find(condition=> {
+            return gameState[condition[0]] === currentPlayer && 
+                   gameState[condition[1]] === currentPlayer && 
+                   gameState[condition[2]] === currentPlayer;
+        });
+
+        winCondition.forEach(index => {
+            cells[index].style.backgroundColor = 'green';
+        });
+    }
 }
 
 function handlePlayerChange() {
@@ -61,7 +95,7 @@ function CheckWin() {
         }
         if (a === b && b === c) {
             roundWon = true;
-            break
+            break;
         }
     }
     if (roundWon) {
@@ -123,6 +157,23 @@ function ChooseMove() {
 
 }
 
+/*function UpdateWinnerBoard(game)
+{
+    const winningConditions = game.findWinningCombo();
+
+    for (let i = 0; i < game.gameBoard.length; i++) {
+        const tile = this.root.querySelector(`.cell[data-cell-index="${i}"]`);
+
+
+        tile.classList.add("cell--Winner");
+        tile.textContent = game.gameBoard[i];
+
+        if (winningConditions && winningConditions.includes(i)) {
+            tile.classList.add("cell--Winner");
+        }
+    }
+}
+*/
 function handleCellClick(clickedCellEvent) {
     const clickedCell = clickedCellEvent.target;
     const clickedCellIndex = parseInt(clickedCell.getAttribute('data-cell-index'));

@@ -88,7 +88,6 @@ function PickRandomPlayer() {
         currentPlayer = "O";
     return;
 }
-PickRandomPlayer()
 
 
 // Reload button functionality
