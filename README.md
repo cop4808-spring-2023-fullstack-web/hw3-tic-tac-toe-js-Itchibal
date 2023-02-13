@@ -26,7 +26,7 @@ Inital Skeleton Github Creator: <a href="https://github.com/michaelkolesidis/tic
 
 
 ## Description 
-The popular Tic-tac-toe game, implemented with vanilla JavaScript.
+The popular Tic-tac-toe game, implemented with vanilla JavaScript, HTML and CSS. Some minor Improvements have been made to the game, a list of the upgrades is below.
 ## Upgrades
 <ul>
   <li>Randomly Selected Starting Player</li>
@@ -36,5 +36,5 @@ The popular Tic-tac-toe game, implemented with vanilla JavaScript.
   <li>Scoreboard</li>
 </ul>
 ## Tic-Tac-Toe Animation (Gif)
-<img src="./tic-tac-toe-screenshot.png">
+![](TICTACTOE.gif)
 
