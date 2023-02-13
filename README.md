@@ -1,6 +1,6 @@
 Name: Adrian Echazabal(aechazabal2018@fau.edu) <br>
 Florida Atlantic University
-# My Full-Stack Homework Repo
+# My Full-Stack Tic-Tac-Toe Repo
 ## Homework 3 <br>
 Create a Tic Tac Toe Game with Upgrades.
 ### Upgraded the Tic Tac Toe Game with
@@ -12,7 +12,7 @@ Create a Tic Tac Toe Game with Upgrades.
     
 </div>
 
-Inital Skeleton Github: <a href="https://github.com/michaelkolesidis/tic-tac-toe"/></a>
+Inital Skeleton Github Creator: <a href="https://github.com/michaelkolesidis/tic-tac-toe"/>Michael Kolesidis</a>
 
 ## Technologies Used
 
