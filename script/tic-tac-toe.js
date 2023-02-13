@@ -128,6 +128,20 @@ function CheckWin() {
 
 }
 
+/*function findWinningCombo(){
+    if(CheckWin()){ // Calling Our CheckWin Function
+        let winCondition = winningConditions.find(condition=> {  //Find the Winning Combo
+            return gameState[condition[0]] === currentPlayer && 
+                   gameState[condition[1]] === currentPlayer && 
+                   gameState[condition[2]] === currentPlayer;
+        });
+
+        winCondition.forEach(index => {  //Once Found, Make them Green.
+            cells[index].style.backgroundColor = 'green';
+        });
+    }
+}*/
+
 function IncreasePoints(){
     if(currentPlayer === "X"){
         PlayerXScore += 1;
