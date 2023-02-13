@@ -35,6 +35,6 @@ The popular Tic-tac-toe game, implemented with vanilla JavaScript, HTML and CSS.
   <li>Highlights Winning Squares</li>
   <li>Scoreboard</li>
 </ul>
-## Tic-Tac-Toe Animation (Gif)
+## Tic-Tac-Toe Animation (Gif) <br>
 ![](https://github.com/cop4808-spring-2023-fullstack-web/hw3-tic-tac-toe-js-Itchibal/blob/main/TICTACTOE.gif)
 
